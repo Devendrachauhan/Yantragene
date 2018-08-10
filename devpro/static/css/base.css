@@ -1,0 +1,14 @@
+content{
+	
+	background-attachment: fixed;
+	background-color: #212F3D;
+}
+
+#yantra_icon{
+	width:40px;
+	height:40px;
+}
+#nav_bar{
+	position:fixed;
+	top:0px;
+}

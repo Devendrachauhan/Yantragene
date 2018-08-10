@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+	<script type="text/javascript" src="{% static 'javascript/note.js' %}"></script>
+	<style>
+
+		h1,#dev{
+			color:white;
+		}
+		#dev{
+			border:2px solid #2ECC71;
+			border-radius: 5px;
+			font-family: tahoma;
+			padding:10px;
+			font-size: 17px;
+		}
+		#kiss{
+			margin-top: 16%;
+			border: 3px solid white;
+			background-color: #424949;
+		}
+
+</style>
+{% endblock %}
+<body>
+{% block content %}
+	<div class=container>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div id="kiss">
+				<center><h1>Notifications </h1></center><br>
+				{% if notes %}
+					<ul class="list-unstyled">
+						
+						{% for i in notes %}
+							<center><li id="dev">{{ i.notify }}</li><br><br></center>
+						{% endfor %}
+					</ul>
+				{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+</body>

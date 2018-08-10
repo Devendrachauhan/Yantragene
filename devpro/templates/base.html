@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YANTRAGENE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link rel="icon" href="https://yantragene.co.in/images/minLogo.png" type="image/jpg" sizes="16x16">
+     <link rel="stylesheet" type="text/css" href={% static "css/base.css" %}>
+    
+     {% block head %}
+     {% endblock %}
+    <style>
+        footer{
+            bottom: 0;
+            position: fixed;
+            width:100%;
+            height: 8.2%;
+        }
+        #footerh1{
+            text-align: center;
+            line-height: 0.6;
+            background-color:bisque;
+            color: #3875d7;
+            position: relative;
+            margin-top: 15px;
+            padding: 15px;
+
+        }
+        #logout{
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <!--<span class="sr-only">Toggle navigation</span>    -->
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">YANTRAGENE</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li id="home_nav"><a href="/"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+                    <li id="event_nav"><a href="/event/"><span class="glyphicon glyphicon-earphone"></span>Events</a></li>
+                    <li id="aboutus_nav"><a href="/aboutus/"><span class="glyphicon glyphicon-info-sign"></span>About US</a></li>
+                    <li id="contact_nav"><a href="/contact/"><span class="glyphicon glyphicon-earphone"></span>Contact US</a></li>
+                    <li id="note_nav"><a href="/notification/"><span class="glyphicon glyphicon-bell"></span> Notification </a></li>
+                    <li id="gallery_nav"><a href="/gallery/"><span class="glyphicon glyphicon-picture"></span> Gallery </a></li>
+
+                    {% if user.is_authenticated %}
+
+                    <li id="welcome_nav" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Welcome {{ user.first_name }}<span class="caret"></span></a>
+                        <ul <ul class="dropdown-menu">
+                            <li><a href="/account/profile/{{user.profile.id}}/">View Profile</a></li>
+                            <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                        <li id="register_nav"><a href="/account/login">Register/Login</a></li>
+                    {% endif %}
+                </ul>
+
+
+            </div>
+        </div>
+    </div>
+    <<br/><br/><br/>
+
+
+{% block content %}
+{% endblock %}
+    <!-- <footer>
+        <h5 id="footerh1"> &copy rights by <b>Devendra</b></h5>
+    </footer> -->
+</body>
+</html>
+
+
+
+
+
+
+

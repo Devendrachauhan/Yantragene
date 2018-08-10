@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YANTRAGENE</title>
+	<link rel="icon" href="https://yantragene.co.in/images/minLogo.png" type="image/jpg" sizes="16x16">
+	<script>src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src={% static "javascript/base1.js" %}></script>
+	<link rel="stylesheet" type="text/css" href={% static "css/base1.css" %}>
+	<style>
+		
+		 #adc{
+			  background-color: #3498DB;
+			  height:700px;
+			  color: white;
+		
+
+		}
+		.topics{
+
+			  margin-top: 10px;
+			  color:#F4D03F;
+			  font-size: 25px;
+			  text-align:left;
+			  cursor:pointer;
+			  display: none;
+
+		}
+		.topics:hover{
+			color:black;
+		}
+		#desc_div,#rules_div,#cord_div,#reg_div{
+			font-size: 17px;
+			margin-left: 23px;
+		}
+
+		#desc_div{
+			display:block;
+		}
+		#rules_div,#cord_div,#reg_div{
+			display:none;
+		}
+		
+	</style>
+</head>  	
+<body>
+{% block body %}
+<div class="container-fluid">
+	<div class="row">
+		
+			<div class="col-lg-3 col-md-4 col-sm-6" id="adc" >
+				<nav class="nav-sidebar" >
+					<ul class="nav tabs">
+						<li class="active"><a class="topics" id="desc_btn" data-toggle="tab">Event Discription</a></li>
+						<li class><a class="topics" id="rules_btn" data-toggle="tab">Rules and Regulations</a></li>
+						<li class><a class="topics" id="cord_btn" data-toggle="tab">Co-Ordinators</a></li>
+						<li class><a class="topics" id="reg_btn" data-toggle="tab">Register</a></li>
+					</ul>
+				</nav>
+			</div>
+		
+		{% block title %}
+		{% endblock %}
+
+			<div id="desc_div" class="col-md-4 col-lg-7   col-sm-10 ">
+					<center><h1>Description</h1></center>
+					{% block desc %}
+					{% endblock %}
+			</div>
+
+
+
+
+			<div id="rules_div" class="col-lg-7 col-md-4 ">
+					<center><h1>Rules And Regulations</h1></center>
+					{% block rules %}
+					{% endblock %}
+			</div>
+
+
+
+
+
+			<div id="cord_div" class="col-lg-7 col-md-4">
+				<center><h1>CO-ORDINATOR</h1></center>
+				{% if cod %}
+				<div class="row">
+					{% for c in cod %}
+					<div class="col-lg-4 col-md-4 col-sm-6">
+						<center>
+							<img src="{{ c.cimage.url }}" alt="{{ c.coord }}" class="cord_image img-responsive img-rounded" style="height: 200px;width: 400px">
+							<p class="pp"><b>{{c.coord}}</b></p>
+							<p class="pp"><span class="glyphicon glyphicon-earphone"><b>{{c.mob}}</b></span></p>
+							<p class="pp"><span class="glyphicon glyphicon-envelope"><b><a href="https://gmail.com">{{c.email}}</a></b></span></p>
+							<style type="text/css">
+								.pp,a{
+									color: #784212;
+									font-family: arial;
+								}
+							</style>
+						</center>
+					</div>
+					{% endfor %}
+				</div>
+				{% else %}
+					<h1>No Details</h1>
+				{% endif %}
+
+			</div>
+			
+
+
+
+			<div id="reg_div" class="col-md-4 col-lg-7">
+					<center><h1>Register</h1></center>
+					{% block reg %}
+					{% endblock %}
+
+			</div>
+
+
+
+
+
+	</div>
+</div>
+{% endblock %}
+</body>
+</html>

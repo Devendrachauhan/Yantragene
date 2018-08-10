@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block head %}
+	
+	<script type="text/javascript" src={% static "javascript/home.js" %}></script>
+	<link rel="icon" href="https://yantragene.co.in/images/minLogo.png" type="image/jpg" sizes="16x16">
+	<style>
+				
+		body{
+			background:#212F3D;
+		}
+		h1{
+			font-size: 11vw;
+			margin-top: 5%;
+		}
+		#marq{
+			font-size: 20px;
+			color:white;
+		}
+		#title_bar{
+			color: #F39C12
+		}
+
+	</style>
+
+{% endblock %}
+{% block content %}
+<body>
+	<center>
+		<img id="image" src="/static/images/minLogo.png">
+		<h1 id="title_bar">YANTRAGENE</h1></center>
+		<marquee behavior="" scrollamount="12"><h5 id="marq">GENE THAT ENCODE TECHNOLOGY</h5></marquee>
+	
+	 
+		   
+
+
+		
+
+</body>
+{% endblock %}

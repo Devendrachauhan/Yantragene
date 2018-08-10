@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        <script type="text/javascript" src={% static "javascript/event.js" %}></script>
+    <style>
+        body{
+            background-color: #212F3C;
+        }
+        #cdiv{
+            margin-top: 80px;
+        }
+        .dept_box{
+            height:420px;
+        }
+    </style>
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="row" id="cdiv">
+
+            {% if outer_event %}
+            {% for j,dlisst in outer_event.items %}
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="img-thumbnail dept_box" >
+                    <img src="{{ j.bimage.url }}" alt="{{ j.bran }}" style="height: 200px; width: 230px">
+                    <div class="caption">
+                        <center><h3>{{ j.bran }}</h3></center><br>
+                    </div>
+
+                    <ul class="list-unstyled">
+                        {% for f in dlisst %}
+                        <center><li><p><a href="/event/details/{{ f.id }}">{{ f.eve }}</a></p></li></center>
+                        {% endfor %}
+                    </ul>
+                </div>
+              </div>  
+            
+            {% endfor %}
+            {% else %}
+                <h1>Not Proper data</h1>
+            {% endif %}
+        </div>
+    </div>
+
+    {% endblock %}
+</body>
+</html>
